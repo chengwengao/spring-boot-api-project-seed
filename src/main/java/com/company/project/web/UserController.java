@@ -34,7 +34,11 @@ public class UserController {
     private DingTalkApiService dingTalkApiService;
 
     /**
-     *  用户新增事件（第一次保存回调URL之前）
+     *  注册/更新回调事件
+     */
+    private static final String CHECK_URL = "check_url";
+    /**
+     *  用户新增事件
      */
     private static final String USER_ADD_ORG_URL = "user_add_org";
     /**
@@ -72,7 +76,9 @@ public class UserController {
 
             //根据回调数据类型做不同的业务处理
             String eventType = obj.getString("EventType");
-            if (USER_ADD_ORG_URL.equals(eventType)) {
+            if (CHECK_URL.equals(eventType)) {
+                bizLogger.info("注册/更新回调地址: " + plainText);
+            } else if(USER_ADD_ORG_URL.equals(eventType)) {
                 bizLogger.info("用户新增: " + plainText);
                 bizLogger.info("userId: " + dingTalkApiService.getUserIdByPlainText(plainText));
             } else if (USER_MODIFY_ORG_URL.equals(eventType)) {
