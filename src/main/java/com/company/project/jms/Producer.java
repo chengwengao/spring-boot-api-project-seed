@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 /**消息生产者
  * Created by chengwengao on 2018/5/8.
  */
-@Service("producer")
+//@Service("producer")
 public class Producer {
 
     // 也可以注入JmsTemplate，JmsMessagingTemplate对JmsTemplate进行了封装

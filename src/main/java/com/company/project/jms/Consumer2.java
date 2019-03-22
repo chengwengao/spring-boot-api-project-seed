@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by chengwengao on 2018/5/10.
  */
-@Component
+//@Component
 public class Consumer2 {
     @JmsListener(destination = "myQueue")
     @SendTo("outQueue") //将return回的值，再发送的"outQueue"队列中
